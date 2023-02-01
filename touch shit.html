@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="p5/p5.js"></script>
+  
+<!--   link following libraries bellow p5 and link the library well -->
+  <script defer src="https://unpkg.com/p5.collide2d"></script>
+  <title>box game</title>
+  
+</head>
+<body>
+  <h1 id="score"></h1>
+  <h1 style="top:40%;" id="timer"></h1>
+  <script>
+    let width = window.innerWidth
+    let height = window.innerHeight
+    let eX = width/2
+    let eY = height/2
+
+    let score = 0
+    let seconds = 60;
+    setInterval(function() {
+    timer.innerHTML = "you have " + String(seconds--) + " seconds left."; if (seconds <= 0){
+        Storage.setItem("score", score);
+        window.location.href = "end.html";
+      };
+    }, 1000);
+
+    function setup(){
+      createCanvas(width, height)
+    }  
+    function draw(){
+      document.getElementById("score").innerHTML = score
+      
+      rectMode(CENTER)
+      // player
+      rect(mouseX, mouseY, 100,100)
+      // enemy
+      rect( eX, eY, 100, 100)
+
+      hit = collideRectRect(mouseX, mouseY, 100, 100, eX, eY, 100, 100)
+      if (hit === true){
+        eX = random(0, width)
+        eY = random(0, height)
+        score += 1
+      }
+    }
+  </script>
+</body>
+</html>

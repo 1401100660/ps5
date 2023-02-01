@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  
+  <script src="p5/p5.js"></script>
+  <title>box challenge</title>
+</head>
+<!--   <p id="x"></p>
+  <p id="y"></p>
+  <p id="xh"></p>
+  <p id="yh"></p> -->
+<body>
+  <script>
+    let x = window.innerWidth
+    let y = window.innerHeight
+    
+    function setup(){
+      createCanvas(x, y)
+    }
+    let wh = x/2
+    let hh = y/2
+    // document.getElementById("x").innerHTML = x
+    // document.getElementById("y").innerHTML = y
+    function draw(){
+      // document.getElementById("xh").innerHTML = wh
+      // document.getElementById("yh").innerHTML = hh
+      let c = color(0,0,0)
+      let b = color(150,50,50)
+      fill(c)
+      square(wh, hh , 25)
+      if (keyIsDown(LEFT_ARROW)) {
+        clear()
+        rectMode(CENTER)
+         if (wh <= 0){
+           wh = 0
+           fill(b)
+         }else{
+           wh -=5
+         }
+      }
+      if (keyIsDown(RIGHT_ARROW)) {
+         if (wh >= x-25){
+           wh = x-25
+           fill(b)
+         }else{
+           wh +=5
+         }
+      }
+      if (keyIsDown(UP_ARROW)) {
+         if (hh <= 0){
+           hh = 0
+           fill(b)
+         }else{
+           hh -=5
+         }
+      }
+      if (keyIsDown(DOWN_ARROW)) {
+         if (hh >= y-25){
+           hh = y-25
+           fill(b)
+         }else{
+           hh +=5
+         }
+      }
+    }
+  </script>
+</body>
+
+</html>

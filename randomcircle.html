@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="p5/p5.js"></script>
+  
+<!--   link following libraries bellow p5 and link the library well -->
+  <script defer src="https://unpkg.com/p5.collide2d"></script>
+  
+  <title>box game</title>
+  
+</head>
+<body style="margin: 0px;">
+<!--   <h1 style="position: absolute; color:red; top:50%; right:50%;" id="title">hi</h1>
+  <h1 style="position: absolute; color:red;" id="ttitle">hi</h1> -->
+  <script>
+    function $(x){
+      return document.getElementById(x)
+    }
+    
+    let w = window.innerWidth
+    let h = window.innerHeight
+    let m
+    let d = 100
+    let x = h/2
+    let y = w/2
+    
+    function setup(){
+      createCanvas(w,h)
+    }
+   
+    function draw(){
+      circle(x,y, d)
+      d = (abs(pmouseX - mouseX))
+      x = x + random((-1*d), d)
+      y = y + random((-1*d), d)
+      if (x <= 0){
+        x = w/2
+      }
+      if (x >= w){
+        x = w/2
+      }
+      if (y <= 0){
+        y = h/2
+      }
+      if(y >= h){
+        y = h/2
+      }
+    }
+    
+  </script>
+</body>
+</html>
