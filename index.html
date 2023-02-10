@@ -6,37 +6,47 @@
 
   <link rel="stylesheet" href="style.css">
   
-  <script src="p5/p5.js"></script>
-  
+<script src="p5/p5.js"></script>
+<script src="jumperObject.js"></script>  
+<script src="movingBox.js"></script>
 <!--   link following libraries bellow p5 and link the library well -->
-  <script defer src="https://unpkg.com/p5.collide2d"></script>
-  
+<script defer src="https://unpkg.com/p5.collide2d"></script>
   <title>box game</title>
-  
 </head>
+  
 <body style="margin: 0px;">
-<!--   <h1 style="position: absolute; color:red; top:50%; right:50%;" id="title">hi</h1>
-  <h1 style="position: absolute; color:red;" id="ttitle">hi</h1> -->
+  <h1 style="position: absolute;" id="asdfg"></h1>
   <script>
     function $(x){
       return document.getElementById(x)
     }
-    
-    let w = window.innerWidth
-    let h = window.innerHeight
+    let h = window.innerHeight;
+    let w = window.innerWidth;
+    var jumper = new jumper()
+    var opponent = new killerBox()
     
     function setup(){
       createCanvas(w,h)
     }
-    let img;
-    function preload() {
-      img = loadImage('bruh.png');
-    }
-    function draw(){
-      background(50);
-      image(img, w/2,h/2,100,100)
-    }
     
+    function draw(){
+      $("asdfg").innerHTML = jumper.x.toFixed(0)
+      clear()
+      jumper.show()
+      jumper.update()
+      
+    }
+    function keyPressed(){
+      if (keyCode == 32){
+        jumper.jump()
+      }
+      if (keyCode == LEFT_ARROW){
+        jumper.shift(1)
+      }
+      if (keyCode == RIGHT_ARROW){
+        jumper.shift(-1)
+      }
+    }
   </script>
 </body>
 </html>
